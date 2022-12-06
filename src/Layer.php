@@ -4,6 +4,7 @@ namespace Lemonade\DataLayer;
 use Exception;
 use Stringable;
 use function json_encode;
+use function str_replace;
 
 final class Layer implements Stringable {
 
