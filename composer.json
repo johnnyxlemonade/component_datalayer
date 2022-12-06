@@ -1,0 +1,19 @@
+{
+ "name": "lemonade/component_datalayer",
+ "license": "MIT",
+ "authors": [
+   {
+    "name": "Honza Mudrak",
+    "email": "honza@core1.agency",
+    "homepage": "https://core1.agency"
+   }
+ ],        
+ "autoload": { 
+   "psr-4": {
+     "Lemonade\\DataLayer\\": "src/"
+   }
+ }, 
+ "require": {
+   "php": ">=8.1"
+ }
+}
