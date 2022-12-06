@@ -6,15 +6,6 @@ use stdClass;
 final class Utils {
 
     /**
-     * @param string $name
-     * @return string
-     */
-    public function __get(string $name) {
-
-        return (isset($this->$name) ? $this->$name : "");
-    }
-    
-    /**
      * @param stdClass $data
      * @param string $propertyName
      * @param int|float|string|null $propertyValue
