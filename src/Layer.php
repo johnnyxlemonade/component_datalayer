@@ -52,9 +52,10 @@ final class Layer implements Stringable {
 
     /**
      * @param string|null $tagManagerId
+     * @param bool $reset
      * @return string
      */
-    public function withTagManager(string $tagManagerId = null): string {
+    public function withTagManager(string $tagManagerId = null, bool $reset = true): string {
 
         $html = "";
 
@@ -64,8 +65,12 @@ final class Layer implements Stringable {
             $html .= PHP_EOL;
             $html .= "window.dataLayer = window.dataLayer || [];";
             $html .= PHP_EOL;
-            $html .= 'dataLayer.push({"ecommerce": null});';
-            $html .= PHP_EOL;
+
+            if($reset) {
+                $html .= 'dataLayer.push({"ecommerce": null});';
+                $html .= PHP_EOL;
+            }
+
             $html .= $this->render();
             $html .= PHP_EOL;
             $html .= "</script>";
