@@ -22,22 +22,22 @@ class Eccomerce extends Content {
     /**
      * @var Shipping|null
      */
-    protected Shipping|null $shipping = null;
+    protected ?Shipping $shipping = null;
 
     /**
      * @var Payment|null
      */
-    protected Payment|null $payment = null;
+    protected ?Payment $payment = null;
 
     /**
      * @var Coupon|null
      */
-    protected Coupon|null $coupon = null;
+    protected ?Coupon $coupon = null;
 
     /**
      * @var Transaction|null
      */
-    protected Transaction|null $transaction = null;
+    protected ?Transaction $transaction = null;
 
     /**
      * @var array<Item>
@@ -109,7 +109,6 @@ class Eccomerce extends Content {
 
         return $this->payment;
     }
-
 
     /**
      * @param Coupon $coupon
