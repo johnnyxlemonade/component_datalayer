@@ -5,7 +5,6 @@ use Lemonade\DataLayer\Currency;
 use Lemonade\DataLayer\Event;
 use Lemonade\DataLayer\Utils;
 use Lemonade\DataLayer\Content;
-use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Data\Coupon;
 use Lemonade\DataLayer\Data\Item;
 use Lemonade\DataLayer\Data\Payment;

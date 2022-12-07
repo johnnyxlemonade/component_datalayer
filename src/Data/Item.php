@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer\Data;
+use Lemonade\DataLayer\Currency;
 use Lemonade\DataLayer\Getter;
 
 /**
