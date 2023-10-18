@@ -166,35 +166,48 @@ class Eccomerce extends Content
 
         $result = new stdClass();
         $result->event = $this->event->value;
-        $result->ecommerce = new stdClass();
 
-        Utils::addProperty(data: $result->ecommerce, propertyName: "value", propertyValue: $this->price);
-        Utils::addProperty(data: $result->ecommerce, propertyName: "currency", propertyValue: $this->currency->value);
+        // detail produktu
+        if($this->event->name === "DETAIL_PRODUCT") {
 
-        if (!empty($this->transaction)) {
 
-            Utils::addProperty(data: $result->ecommerce, propertyName: "transaction_id", propertyValue: $this->transaction->getTransactionId());
-            Utils::addProperty(data: $result->ecommerce, propertyName: "affiliation", propertyValue: $this->transaction->getAffiliation());
+            Utils::addProperty(data: $result, propertyName: "value", propertyValue: $this->price);
+            Utils::addProperty(data: $result, propertyName: "currency", propertyValue: $this->currency->value);
+            Utils::addItems(ecommerce: $result, items: $this->items);
+
+        } else {
+
+            $result->ecommerce = new stdClass();
+
+            Utils::addProperty(data: $result->ecommerce, propertyName: "value", propertyValue: $this->price);
+            Utils::addProperty(data: $result->ecommerce, propertyName: "currency", propertyValue: $this->currency->value);
+
+
+            if (!empty($this->transaction)) {
+
+                Utils::addProperty(data: $result->ecommerce, propertyName: "transaction_id", propertyValue: $this->transaction->getTransactionId());
+                Utils::addProperty(data: $result->ecommerce, propertyName: "affiliation", propertyValue: $this->transaction->getAffiliation());
+            }
+
+            if (!empty($this->shipping)) {
+
+                Utils::addProperty(data: $result->ecommerce, propertyName: "shipping_tier", propertyValue: $this->shipping->name);
+                Utils::addProperty(data: $result->ecommerce, propertyName: "shipping_value", propertyValue: $this->shipping->price);
+            }
+
+            if (!empty($this->payment)) {
+
+                Utils::addProperty(data: $result->ecommerce, propertyName: "payment_type", propertyValue: $this->payment->name);
+                Utils::addProperty(data: $result->ecommerce, propertyName: "payment_value", propertyValue: $this->payment->price);
+            }
+
+            if (!empty($this->coupon)) {
+
+                Utils::addProperty(data: $result->ecommerce, propertyName: "coupon", propertyValue: $this->coupon->name);
+            }
+
+            Utils::addItems(ecommerce: $result->ecommerce, items: $this->items);
         }
-
-        if (!empty($this->shipping)) {
-
-            Utils::addProperty(data: $result->ecommerce, propertyName: "shipping_tier", propertyValue: $this->shipping->name);
-            Utils::addProperty(data: $result->ecommerce, propertyName: "shipping_value", propertyValue: $this->shipping->price);
-        }
-
-        if (!empty($this->payment)) {
-
-            Utils::addProperty(data: $result->ecommerce, propertyName: "payment_type", propertyValue: $this->payment->name);
-            Utils::addProperty(data: $result->ecommerce, propertyName: "payment_value", propertyValue: $this->payment->price);
-        }
-
-        if (!empty($this->coupon)) {
-
-            Utils::addProperty(data: $result->ecommerce, propertyName: "coupon", propertyValue: $this->coupon->name);
-        }
-
-        Utils::addItems(ecommerce: $result->ecommerce, items: $this->items);
 
         return $result;
     }
