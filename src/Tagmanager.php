@@ -64,7 +64,7 @@ final class Tagmanager implements Stringable
             if ($this->reset) {
 
                 $html .= PHP_EOL;
-                $html .= "\t\t" . 'dataLayer.push({"ecommerce": null});';
+                //$html .= "\t\t" . 'dataLayer.push({"ecommerce": null});';
                 $html .= PHP_EOL;
             }
 
