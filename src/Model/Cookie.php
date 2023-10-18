@@ -33,11 +33,10 @@ final class Cookie extends Content
     {
 
         $result = new stdClass();
-        $result->event = "cookie_consent";
-        $result->data = new stdClass();
+        $result->consent = new stdClass();
 
-        Utils::addProperty(data: $result->data, propertyName: "marketing", propertyValue: ($this->marketing ? self::GRANTED : self::DENIED));
-        Utils::addProperty(data: $result->data, propertyName: "analytics", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->consent, propertyName: "ad_storage", propertyValue: ($this->marketing ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->consent, propertyName: "analytics_storage", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
 
         return $result;
     }
