@@ -6,7 +6,8 @@ namespace Lemonade\DataLayer\Data;
  * @Transaction
  * @package Lemonade\DataLayer
  */
-final class Transaction {
+final class Transaction
+{
 
     /**
      * @var string|null
@@ -21,12 +22,15 @@ final class Transaction {
     /**
      * @param string $transactionId
      */
-    public function __construct(private readonly string $transactionId) {}
+    public function __construct(private readonly string $transactionId)
+    {
+    }
 
     /**
      * @return string
      */
-    public function getTransactionId(): string {
+    public function getTransactionId(): string
+    {
 
         return $this->transactionId;
     }
@@ -35,7 +39,8 @@ final class Transaction {
      * @param string|null $affiliation
      * @return $this
      */
-    public function setAffiliation(string $affiliation = null): self {
+    public function setAffiliation(string $affiliation = null): self
+    {
 
         $this->affiliation = $affiliation;
 
@@ -45,7 +50,8 @@ final class Transaction {
     /**
      * @return string|null
      */
-    public function getAffiliation(): string|null {
+    public function getAffiliation(): string|null
+    {
 
         return $this->affiliation;
     }
@@ -54,7 +60,8 @@ final class Transaction {
      * @param $tax
      * @return $this
      */
-    public function setTax($tax): self {
+    public function setTax($tax): self
+    {
 
         $this->tax = $tax;
 
@@ -64,7 +71,8 @@ final class Transaction {
     /**
      * @return float|null
      */
-    public function getTax(): float|null {
+    public function getTax(): float|null
+    {
 
         return $this->tax;
     }

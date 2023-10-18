@@ -2,8 +2,8 @@
 
 
 namespace Lemonade\DataLayer\Model;
+
 use Lemonade\DataLayer\Content;
-use Lemonade\DataLayer\Event;
 use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Utils;
 use stdClass;
@@ -16,13 +16,15 @@ final class Cookie extends Content
 {
 
     const GRANTED = "granted";
-    const DENIED  = "denied";
+    const DENIED = "denied";
 
     /**
      * @param bool $marketing
      * @param bool $analytics
      */
-    public function __construct(protected readonly bool $marketing = false, protected readonly bool $analytics = false) {}
+    public function __construct(protected readonly bool $marketing = false, protected readonly bool $analytics = false)
+    {
+    }
 
     /**
      * @return stdClass
@@ -31,11 +33,11 @@ final class Cookie extends Content
     {
 
         $result = new stdClass();
-        $result->event  = "cookie_consent";
+        $result->event = "cookie_consent";
         $result->data = new stdClass();
 
-        Utils::addProperty(data: $result->data, propertyName: "marketing", propertyValue: ($marketing ? self::GRANTED : self::DENIED));
-        Utils::addProperty(data: $result->data, propertyName: "analytics", propertyValue: ($analytics ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->data, propertyName: "marketing", propertyValue: ($this->marketing ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->data, propertyName: "analytics", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
 
         return $result;
     }

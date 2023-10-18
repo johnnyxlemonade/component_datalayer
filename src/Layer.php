@@ -1,15 +1,16 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer;
+
 use Exception;
 use Stringable;
 use function json_encode;
-use function str_replace;
 
-final class Layer implements Stringable {
+final class Layer implements Stringable
+{
 
     /**
-     * @var array
+     * @var Content|null
      */
     protected ?Content $content = null;
 
@@ -38,7 +39,7 @@ final class Layer implements Stringable {
 
             $encoded = json_encode(value: ($this->content ?? []));
 
-        } catch (Exception $e) {
+        } catch (Exception) {
 
             $encoded = "[]";
         }

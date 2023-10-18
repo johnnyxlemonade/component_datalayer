@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer;
-use Exception;
+
 use Stringable;
-use function json_encode;
 use function str_replace;
 
 final class Tagmanager implements Stringable
@@ -16,9 +15,11 @@ final class Tagmanager implements Stringable
      */
     protected function __construct(
         protected readonly ?string $code = null,
-        protected readonly array $data = [],
-        protected readonly bool $reset = true
-    ) {}
+        protected readonly array   $data = [],
+        protected readonly bool    $reset = true
+    )
+    {
+    }
 
 
     /**
@@ -36,7 +37,7 @@ final class Tagmanager implements Stringable
      * @param bool $reset
      * @return string
      */
-    public static function render(string $code = null, array $data = [], bool $reset = true)
+    public static function render(string $code = null, array $data = [], bool $reset = true): string
     {
 
         return (new self(code: $code, data: $data, reset: $reset))->_render();
@@ -50,7 +51,7 @@ final class Tagmanager implements Stringable
 
         $html = "";
 
-        if(!empty($this->code)) {
+        if (!empty($this->code)) {
 
             $html = PHP_EOL;
             $html .= "\t<!-- DataLayer -->";
@@ -60,15 +61,15 @@ final class Tagmanager implements Stringable
             $html .= "\t\t" . 'window.dataLayer = window.dataLayer || [];';
             $html .= PHP_EOL;
 
-            if($this->reset) {
+            if ($this->reset) {
 
                 $html .= PHP_EOL;
-                $html .= "\t\t" .'dataLayer.push({"ecommerce": null});';
+                $html .= "\t\t" . 'dataLayer.push({"ecommerce": null});';
                 $html .= PHP_EOL;
             }
 
-            if(!empty($this->data)) {
-                foreach($this->data as $val) {
+            if (!empty($this->data)) {
+                foreach ($this->data as $val) {
                     $html .= "\t\t" . $val . PHP_EOL;
                 }
             }
@@ -79,7 +80,7 @@ final class Tagmanager implements Stringable
             $html .= "\t<!-- End DataLayer -->";
 
             $html .= PHP_EOL;
-            $html .= (string) str_replace(search: "{code}", replace: $this->code, subject: $this->_getScript());
+            $html .= (string)str_replace(search: "{code}", replace: $this->code, subject: $this->_getScript());
             $html .= PHP_EOL;
         }
 

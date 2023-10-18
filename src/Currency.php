@@ -2,7 +2,8 @@
 
 namespace Lemonade\DataLayer;
 
-enum Currency: string {
+enum Currency: string
+{
 
     case CZK = 'CZK';
     case EUR = 'EUR';

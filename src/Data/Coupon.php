@@ -6,10 +6,13 @@ namespace Lemonade\DataLayer\Data;
  * @Shipping
  * @package Lemonade\DataLayer
  */
-final class Coupon {
+final class Coupon
+{
 
     /**
      * @param string|null $name
      */
-    public function __construct(public ?string $name = null) {}
+    public function __construct(public ?string $name = null)
+    {
+    }
 }

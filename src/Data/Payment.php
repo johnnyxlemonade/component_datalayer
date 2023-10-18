@@ -6,7 +6,8 @@ namespace Lemonade\DataLayer\Data;
  * @Shipping
  * @package Lemonade\DataLayer
  */
-final class Payment {
+final class Payment
+{
 
     /**
      * @param string|null $name
@@ -14,7 +15,8 @@ final class Payment {
      */
     public function __construct(
         public ?string $name = null,
-        public ?float $price = null) {
+        public ?float  $price = null)
+    {
 
     }
 

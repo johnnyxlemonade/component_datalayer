@@ -2,13 +2,15 @@
 
 namespace Lemonade\DataLayer;
 
-trait Getter {
+trait Getter
+{
 
     /**
      * @param string $name
      * @return string
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
 
         return (isset($this->$name) ? $this->$name : "");
     }

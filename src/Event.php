@@ -2,7 +2,8 @@
 
 namespace Lemonade\DataLayer;
 
-enum Event: string {
+enum Event: string
+{
 
     case CART_ADD = "add_to_cart";
     case CART_REMOVE = "remove_from_cart";

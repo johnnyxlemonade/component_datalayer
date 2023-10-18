@@ -2,8 +2,8 @@
 
 
 namespace Lemonade\DataLayer\Model;
+
 use Lemonade\DataLayer\Content;
-use Lemonade\DataLayer\Event;
 use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Utils;
 use stdClass;
@@ -42,13 +42,14 @@ final class Page extends Content
      *
      * @var string
      */
-    protected $appPageType = "other";
+    protected string $appPageType = "other";
 
     /**
      * @param string|null $index
-     * @param string|null $title
      */
-    public function __construct(protected readonly ?string $index = null) {}
+    public function __construct(protected readonly ?string $index = null)
+    {
+    }
 
     /**
      * @return stdClass

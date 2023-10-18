@@ -1,9 +1,11 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer;
+
 use stdClass;
 
-final class Utils {
+final class Utils
+{
 
     /**
      * @param stdClass $data
@@ -11,53 +13,57 @@ final class Utils {
      * @param int|float|string|null $propertyValue
      * @return void
      */
-    public static function addProperty(stdClass $data, string $propertyName, int|float|string|null $propertyValue = null): void {
+    public static function addProperty(stdClass $data, string $propertyName, int|float|string|null $propertyValue = null): void
+    {
 
         if ($propertyValue !== null && $propertyValue !== "") {
+
             $data->{$propertyName} = $propertyValue;
         }
     }
 
     /**
      * @param stdClass $ecommerce
-     * @param array $items<Item>
+     * @param array $items <Item>
      * @return void
      */
-    public static function addItems(stdClass $ecommerce, array $items = []): void {
-        
+    public static function addItems(stdClass $ecommerce, array $items = []): void
+    {
+
         $index = 0;
-        
-        if(!empty($items)) {
+
+        if (!empty($items)) {
             foreach ($items as $val) {
-                
+
                 $item = new stdClass();
                 $item->item_id = $val->item_id;
                 $item->item_name = $val->item_name;
                 $item->index = $index++;
 
-                self::addProperty($item, "price", $val->price);
-                self::addProperty($item, "quantity", $val->quantity);
-                self::addProperty($item, "affiliation", $val->affiliation);
-                self::addProperty($item, "coupon", $val->coupon);
-                self::addProperty($item, "currency", $val->currency);
-                self::addProperty($item, "discount", $val->discount);
-                self::addProperty($item, "item_brand", $val->item_brand);
-                self::addProperty($item, "item_category", $val->item_category);
-                self::addProperty($item, "item_category2", $val->item_category2);
-                self::addProperty($item, "item_category3", $val->item_category3);
-                self::addProperty($item, "item_category4", $val->item_category4);
-                self::addProperty($item, "item_category5", $val->item_category5);
-                self::addProperty($item, "item_list_id", $val->item_list_id);
-                self::addProperty($item, "item_list_name", $val->item_list_name);
-                self::addProperty($item, "item_variant", $val->item_variant);
-                self::addProperty($item, "location_id", $val->location_id);
+                self::addProperty(data: $item, propertyName: "price", propertyValue: $val->price);
+                self::addProperty(data: $item, propertyName: "quantity", propertyValue: $val->quantity);
+                self::addProperty(data: $item, propertyName: "affiliation", propertyValue: $val->affiliation);
+                self::addProperty(data: $item, propertyName: "coupon", propertyValue: $val->coupon);
+                self::addProperty(data: $item, propertyName: "currency", propertyValue: $val->currency);
+                self::addProperty(data: $item, propertyName: "discount", propertyValue: $val->discount);
+                self::addProperty(data: $item, propertyName: "item_brand", propertyValue: $val->item_brand);
+                self::addProperty(data: $item, propertyName: "item_category", propertyValue: $val->item_category);
+                self::addProperty(data: $item, propertyName: "item_category2", propertyValue: $val->item_category2);
+                self::addProperty(data: $item, propertyName: "item_category3", propertyValue: $val->item_category3);
+                self::addProperty(data: $item, propertyName: "item_category4", propertyValue: $val->item_category4);
+                self::addProperty(data: $item, propertyName: "item_category5", propertyValue: $val->item_category5);
+                self::addProperty(data: $item, propertyName: "item_list_id", propertyValue: $val->item_list_id);
+                self::addProperty(data: $item, propertyName: "item_list_name", propertyValue: $val->item_list_name);
+                self::addProperty(data: $item, propertyName: "item_variant", propertyValue: $val->item_variant);
+                self::addProperty(data: $item, propertyName: "location_id", propertyValue: $val->location_id);
 
                 $ecommerce->items[] = $item;
             }
+
         } else {
 
             $ecommerce->items = [];
         }
     }
-    
+
 }
