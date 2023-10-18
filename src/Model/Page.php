@@ -56,8 +56,8 @@ final class Page extends Content
         $result = new stdClass();
         $result->event = "page_view";
         $result->data = new stdClass();
-
-        Utils::addProperty(data: $result->data, propertyName: "pageType", propertyValue: ($this->appConfig[$index] ?? "other"));
+        
+        Utils::addProperty(data: $result->data, propertyName: "pageType", propertyValue: ($this->appConfig[$this->index] ?? "other"));
 
         return $result;
     }
