@@ -5,6 +5,7 @@ namespace Lemonade\DataLayer;
 enum Event: string
 {
 
+    case DEFAULT_CONSENT = "default_consent";
     case CART_ADD = "add_to_cart";
     case CART_REMOVE = "remove_from_cart";
     case CART_VIEW = "view_cart";

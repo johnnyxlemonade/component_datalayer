@@ -4,6 +4,7 @@
 namespace Lemonade\DataLayer\Model;
 
 use Lemonade\DataLayer\Content;
+use Lemonade\DataLayer\Event;
 use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Utils;
 use stdClass;
@@ -33,6 +34,7 @@ final class Cookie extends Content
     {
 
         $result = new stdClass();
+        $result->event = Event::DEFAULT_CONSENT;
         $result->consent = new stdClass();
 
         Utils::addProperty(data: $result->consent, propertyName: "ad_storage", propertyValue: ($this->marketing ? self::GRANTED : self::DENIED));

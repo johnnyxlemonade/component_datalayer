@@ -57,7 +57,7 @@ final class Tagmanager implements Stringable
             $html = PHP_EOL;
             $html .= (string)str_replace(search: "{code}", replace: $this->code, subject: $this->_getScript());
             $html .= PHP_EOL;
-            
+
             $html .= "\t<!-- DataLayer -->";
             $html .= PHP_EOL;
             $html .= "\t<script>\n";
