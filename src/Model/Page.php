@@ -4,6 +4,7 @@
 namespace Lemonade\DataLayer\Model;
 
 use Lemonade\DataLayer\Content;
+use Lemonade\DataLayer\Event;
 use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Utils;
 use stdClass;
@@ -58,6 +59,7 @@ final class Page extends Content
     {
 
         $result = new stdClass();
+        $result->event = Event::DEFAULT_PAGE;
         $result->page = new stdClass();
 
         Utils::addProperty(data: $result->page, propertyName: "pageType", propertyValue: ($this->appConfig[$this->index] ?? "other"));
