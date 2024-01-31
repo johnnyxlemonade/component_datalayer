@@ -116,10 +116,10 @@ final class Item
 
 
     /**
-     * @param int|null $quantity
+     * @param int|float|null $quantity
      * @return $this
      */
-    public function quantity(int $quantity = null): self
+    public function quantity(int|float $quantity = null): self
     {
 
         $this->quantity = $quantity;
