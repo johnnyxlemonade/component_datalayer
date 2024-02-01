@@ -39,6 +39,8 @@ final class Cookie extends Content
 
         Utils::addProperty(data: $result->consent, propertyName: "ad_storage", propertyValue: ($this->marketing ? self::GRANTED : self::DENIED));
         Utils::addProperty(data: $result->consent, propertyName: "analytics_storage", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->consent, propertyName: "ad_user_data", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
+        Utils::addProperty(data: $result->consent, propertyName: "ad_personalization", propertyValue: ($this->analytics ? self::GRANTED : self::DENIED));
 
         return $result;
     }
