@@ -2,6 +2,8 @@
 
 namespace Lemonade\DataLayer;
 
+use Lemonade\Cookie\CookieForm;
+use Lemonade\Cookie\CookieTracking;
 use Stringable;
 use function str_replace;
 
@@ -11,12 +13,12 @@ final class Tagmanager implements Stringable
     /**
      * @param string|null $code
      * @param array $data
-     * @param bool $reset
+     * @param CookieForm $cookie
      */
     protected function __construct(
         protected readonly ?string $code = null,
         protected readonly array   $data = [],
-        protected readonly bool    $reset = true
+        protected readonly CookieForm $cookie = new CookieForm()
     )
     {
     }
@@ -34,13 +36,13 @@ final class Tagmanager implements Stringable
     /**
      * @param string|null $code
      * @param array $data
-     * @param bool $reset
+     * @param CookieForm|null $cookie
      * @return string
      */
-    public static function render(string $code = null, array $data = [], bool $reset = true): string
+    public static function render(string $code = null, array $data = [], CookieForm $cookie = null): string
     {
 
-        return (new self(code: $code, data: $data, reset: $reset))->_render();
+        return (new self(code: $code, data: $data, cookie: $cookie))->_render();
     }
 
     /**
@@ -64,18 +66,22 @@ final class Tagmanager implements Stringable
             $html .= PHP_EOL;
             $html .= "\t\t" . 'window.dataLayer = window.dataLayer || [];';
             $html .= PHP_EOL;
-
-            if ($this->reset) {
-
-                $html .= PHP_EOL;
-                //$html .= "\t\t" . 'dataLayer.push({"ecommerce": null});';
-                $html .= PHP_EOL;
-            }
+            $html .= "\t\t" . 'function gtag(){dataLayer.push(arguments);}';
+            $html .= PHP_EOL;
 
             if (!empty($this->data)) {
                 foreach ($this->data as $val) {
                     $html .= "\t\t" . $val . PHP_EOL;
                 }
+            }
+
+            // gtag
+            if($this->cookie instanceof CookieForm) {
+
+                $html .= PHP_EOL;
+                $html .= "\t\t" . sprintf('gtag("consent", "default", %s)', json_encode(value: $this->cookie->getDataLayer()));
+                $html .= PHP_EOL;
+
             }
 
             $html .= PHP_EOL;
