@@ -69,12 +69,6 @@ final class Tagmanager implements Stringable
             $html .= "\t\t" . 'function gtag(){dataLayer.push(arguments);}';
             $html .= PHP_EOL;
 
-            if (!empty($this->data)) {
-                foreach ($this->data as $val) {
-                    $html .= "\t\t" . $val . PHP_EOL;
-                }
-            }
-
             // gtag
             if($this->cookie instanceof CookieForm) {
 
@@ -83,6 +77,16 @@ final class Tagmanager implements Stringable
                 $html .= PHP_EOL;
 
             }
+
+            $html .= PHP_EOL;
+            
+            // ostatni
+            if (!empty($this->data)) {
+                foreach ($this->data as $val) {
+                    $html .= "\t\t" . $val . PHP_EOL;
+                }
+            }
+
 
             $html .= PHP_EOL;
             $html .= "\t</script>";
