@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer;
+use Lemonade\DataLayer\Data\Item;
 use stdClass;
 
 /**

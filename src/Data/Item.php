@@ -4,13 +4,12 @@ namespace Lemonade\DataLayer\Data;
 use Lemonade\DataLayer\Currency;
 
 /**
- * @package Lemonade\DataLayer
+ * @Item
+ * @\Lemonade\DataLayer\Data\Item
  * @see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#add_to_cart
  */
 final class Item
 {
-
-    use ItemGetter;
 
     /**
      * @var float|null
@@ -105,6 +104,14 @@ final class Item
     }
 
     /**
+     * @return string
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
+    }
+
+    /**
      * @param float|null $price
      * @return $this
      */
@@ -160,7 +167,7 @@ final class Item
     public function currency(?string $currency): self
     {
 
-        $this->currency = (Currency::tryFrom(value: (string) $currency)?->value ?? Currency::CZK->value);
+        $this->currency = (Currency::tryFrom(value: (string) $currency)->value ?? Currency::CZK->value);
 
         return $this;
     }
