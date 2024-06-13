@@ -4,14 +4,13 @@ namespace Lemonade\DataLayer\Model;
 
 use Lemonade\DataLayer\Content;
 use Lemonade\DataLayer\Event;
-use Lemonade\DataLayer\Translator;
 use Lemonade\DataLayer\Utils;
 use stdClass;
 
 /**
  * @Search
- * @package Lemonade\DataLayer
- * @link https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#search
+ * @\Lemonade\DataLayer\Model\Search
+ * @see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#search
  */
 class Search extends Content
 {

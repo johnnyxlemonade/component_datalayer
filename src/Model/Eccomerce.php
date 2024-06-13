@@ -43,7 +43,7 @@ class Eccomerce extends Content
     /**
      * @var array<Item>
      */
-    protected $items = [];
+    protected array $items = [];
 
     /**
      * @param Event $event

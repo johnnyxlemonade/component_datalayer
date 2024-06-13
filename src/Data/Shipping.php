@@ -15,6 +15,7 @@ final class Shipping
      */
     public function __construct(public ?string $name = null, public ?float $price = null)
     {
+
     }
 
 }

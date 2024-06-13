@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace Lemonade\DataLayer\Model;
 
 use Lemonade\DataLayer\Content;
@@ -11,7 +10,7 @@ use stdClass;
 
 /**
  * @Page
- * @package Lemonade\DataLayer
+ * @\Lemonade\DataLayer\Model\Page
  */
 final class Page extends Content
 {

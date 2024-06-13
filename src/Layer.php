@@ -2,7 +2,6 @@
 
 namespace Lemonade\DataLayer;
 
-use Exception;
 use Stringable;
 use function json_encode;
 

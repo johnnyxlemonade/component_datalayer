@@ -9,8 +9,8 @@ use stdClass;
 
 /**
  * @Share
- * @package Lemonade\DataLayer
- * @link https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#share
+ * @\Lemonade\DataLayer\Model\Share
+ * @see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#share
  */
 class Share extends Content
 {

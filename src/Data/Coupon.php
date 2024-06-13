@@ -3,8 +3,8 @@
 namespace Lemonade\DataLayer\Data;
 
 /**
- * @Shipping
- * @package Lemonade\DataLayer
+ * @Coupon
+ * @\Lemonade\DataLayer\Data\Coupon
  */
 final class Coupon
 {
@@ -14,5 +14,6 @@ final class Coupon
      */
     public function __construct(public ?string $name = null)
     {
+
     }
 }

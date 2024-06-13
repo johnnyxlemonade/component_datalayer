@@ -4,7 +4,7 @@ namespace Lemonade\DataLayer\Data;
 
 /**
  * @Transaction
- * @package Lemonade\DataLayer
+ * @\Lemonade\DataLayer\Data\Transaction
  */
 final class Transaction
 {
@@ -24,6 +24,7 @@ final class Transaction
      */
     public function __construct(private readonly string $transactionId)
     {
+
     }
 
     /**
