@@ -1,8 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Lemonade\DataLayer;
+namespace Lemonade\DataLayer\Data;
 
-trait Getter
+/**
+ * @Getter
+ * @\Lemonade\DataLayer\Getter
+ */
+trait ItemGetter
 {
 
     /**
@@ -12,7 +16,7 @@ trait Getter
     public function __get(string $name)
     {
 
-        return (isset($this->$name) ? $this->$name : "");
+        return ($this->$name ?? "");
     }
 
 }

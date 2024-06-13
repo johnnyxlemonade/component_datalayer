@@ -2,6 +2,10 @@
 
 namespace Lemonade\DataLayer;
 
+/**
+ * @Event
+ * @\Lemonade\DataLayer\Event
+ */
 enum Event: string
 {
 

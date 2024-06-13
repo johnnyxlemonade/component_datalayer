@@ -3,26 +3,28 @@
 namespace Lemonade\DataLayer;
 
 use Lemonade\Cookie\CookieForm;
-use Lemonade\Cookie\CookieTracking;
 use Stringable;
 use function str_replace;
 
+/**
+ * @Tagmanager
+ * @\Lemonade\DataLayer\Tagmanager
+ */
 final class Tagmanager implements Stringable
 {
 
     /**
      * @param string|null $code
-     * @param array $data
-     * @param CookieForm $cookie
+     * @param array<mixed> $data
+     * @param CookieForm|null $cookie
      */
     protected function __construct(
-        protected readonly ?string $code = null,
-        protected readonly array   $data = [],
-        protected readonly CookieForm $cookie = new CookieForm()
+        protected ?string $code = null,
+        protected array   $data = [],
+        protected ?CookieForm $cookie = null
     )
     {
     }
-
 
     /**
      * @return string
@@ -35,14 +37,14 @@ final class Tagmanager implements Stringable
 
     /**
      * @param string|null $code
-     * @param array $data
+     * @param array<mixed> $data
      * @param CookieForm|null $cookie
      * @return string
      */
-    public static function render(string $code = null, array $data = [], CookieForm $cookie = null): string
+    public static function render(string $code = null, array $data = [], ?CookieForm $cookie = null): string
     {
 
-        return (new self(code: $code, data: $data, cookie: $cookie))->_render();
+        return (new Tagmanager(code: $code, data: $data, cookie: $cookie))->_render();
     }
 
     /**
@@ -53,7 +55,7 @@ final class Tagmanager implements Stringable
 
         $html = "";
 
-        if (!empty($this->code)) {
+        if ((string) $this->code !== "") {
 
             $html .= PHP_EOL;
             $html .= "\t<!-- DataLayer -->";
@@ -74,21 +76,20 @@ final class Tagmanager implements Stringable
             }
 
             $html .= PHP_EOL;
-            
+
             // ostatni
-            if (!empty($this->data)) {
+            if (count($this->data) > 0) {
                 foreach ($this->data as $val) {
                     $html .= "\t\t" . $val . PHP_EOL;
                 }
             }
-
 
             $html .= PHP_EOL;
             $html .= "\t</script>";
             $html .= PHP_EOL;
             $html .= "\t<!-- End DataLayer -->";
             $html .= PHP_EOL;
-            $html .= (string)str_replace(search: "{code}", replace: $this->code, subject: $this->_getScript());
+            $html .=  str_replace(search: "{code}", replace: (string) $this->code, subject: $this->_getScript());
             $html .= PHP_EOL;
         }
 

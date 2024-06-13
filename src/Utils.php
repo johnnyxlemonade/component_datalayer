@@ -1,9 +1,12 @@
 <?php declare(strict_types=1);
 
 namespace Lemonade\DataLayer;
-
 use stdClass;
 
+/**
+ * @Utils
+ * @\Lemonade\DataLayer\Utils
+ */
 final class Utils
 {
 
@@ -24,7 +27,7 @@ final class Utils
 
     /**
      * @param stdClass $ecommerce
-     * @param array $items <Item>
+     * @param array<Item> $items
      * @return void
      */
     public static function addItems(stdClass $ecommerce, array $items = []): void
@@ -32,7 +35,7 @@ final class Utils
 
         $index = 0;
 
-        if (!empty($items)) {
+        if(count($items) > 0) {
             foreach ($items as $val) {
 
                 $item = new stdClass();

@@ -6,6 +6,10 @@ use Exception;
 use Stringable;
 use function json_encode;
 
+/**
+ * @Layer
+ * @\Lemonade\DataLayer\Layer
+ */
 final class Layer implements Stringable
 {
 
@@ -21,7 +25,7 @@ final class Layer implements Stringable
     public function create(Content $content = null): self
     {
 
-        if (!empty($content)) {
+        if ($content instanceof Content) {
 
             $this->content = $content;
         }
@@ -35,26 +39,29 @@ final class Layer implements Stringable
     public function render(): string
     {
 
-        try {
+        $data = "[]";
+        $test = json_encode(value: ($this->content ?? []));
 
-            $encoded = json_encode(value: ($this->content ?? []));
+        if($test !== false) {
 
-        } catch (Exception) {
-
-            $encoded = "[]";
+            $data = $test;
         }
 
-
-        return ($encoded === "[]" ? "" : 'dataLayer.push(' . $encoded . ');');
+        return ($data === "[]" ? "" : 'dataLayer.push(' . $data . ');');
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function toArray(): array
     {
 
-        return $this->content->toArray();
+        if ($this->content instanceof Content) {
+
+            return $this->content->toArray();
+        }
+
+        return [];
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace Lemonade\DataLayer;
 
+/**
+ * @Currency
+ * @\Lemonade\DataLayer\Currency
+ */
 enum Currency: string
 {
 

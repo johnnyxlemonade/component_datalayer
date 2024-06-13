@@ -5,6 +5,10 @@ namespace Lemonade\DataLayer;
 use JsonSerializable;
 use stdClass;
 
+/**
+ * @Content
+ * @\Lemonade\DataLayer\Content
+ */
 abstract class Content extends stdClass implements JsonSerializable
 {
 
@@ -15,12 +19,12 @@ abstract class Content extends stdClass implements JsonSerializable
     abstract public function jsonSerialize(): stdClass;
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function toArray(): array
     {
 
-        return (array)$this->jsonSerialize();
+        return (array) $this->jsonSerialize();
     }
 
 }
