@@ -47,10 +47,10 @@ class Eccomerce extends Content
 
     /**
      * @param Event $event
-     * @param float $price
+     * @param float|null $price
      * @param Currency $currency
      */
-    public function __construct(private readonly Event $event, private readonly float $price = 0, private readonly Currency $currency = Currency::CZK)
+    public function __construct(private readonly Event $event, private readonly float|null $price = null, private readonly Currency $currency = Currency::CZK)
     {
     }
 
